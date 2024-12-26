@@ -1,0 +1,133 @@
+/* ควรในใส่ทุกครั้ง เป็นการกำหนดขนาดของ box เราให้ตรงตามที่ตั้งไว้ */
+* {
+    box-sizing: border-box;
+    font-family: "Anuphan","Open Sans", sans-serif;
+}
+
+/* ไม่ต้องการให้ ในส่วนของ html หรือ body มีช่องว่างระหว่างขอบใดๆ */
+html,body {
+    /* ช่องว่างระหว่างเนื้อหาและขอบ */
+    padding: 0;
+    /* ช่องว่างระหว่างกล่องกับ padding */
+    margin: 0;
+}
+
+/* เป็นคำสั่งกำหนดส่วน header ให้ยึดตำแหน่งด้านบนสุดของหน้าเป็นหลัก*/
+nav {
+    position: sticky;
+    /* padding บนล่าง / ซ้ายขวา ระยะขอบกับกล่อง*/
+    padding: 8px 24px ;
+    background-color: rgb(214, 214, 214);
+    /* จัดให้มาอยู่ในแนวเดียวกัน flex */
+    display: flex;
+    /* จัดรูปแบบบในแนวนอนโดยจัด Flex Item ให้มีช่องว่างระหว่าง ด้านหน้า ตรงกลาง ด้านหลัง ให้เท่ากัน*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* จัดรูปแบบของ cartSummary ให้แยกออกมาจาก nav */
+#cartSummary {
+    /* แยกออกมาให้เป็นอิสระแล้วจัดตำแหน่งใหม่ */
+    position: absolute;
+    /* ลงมาจาข้างบน 40px */
+    top: 80px;
+    /* เลื่อนจากขวาเข้ามา 20px */
+    right: 20px;
+    /* สีพื้นหลัง */
+    background-color: white;
+    /* ระยะห่างขอบกับกล่อง */
+    padding: 16px;
+    /* ใส่กรอบ */
+    border: 1px solid rgb(81, 81, 81);
+
+    /* แก้่ไขตารางภายใต้ cartSummary */
+    table {
+        /* กำหนดขนาดตัวอักษร */
+        th {
+            font-weight: 700;
+        }
+        th,td {
+            /* ขนาดขั้นต่ำของตาราง */
+            min-width: 100px;
+            /* จัดตัวอักษรตรงกลาง */
+            text-align: center;
+        }
+    }
+}
+
+/* รายการสินค้า */
+.productCard {
+    /* ใส่เส้นเพื่อดูว่าลักษณะยังไง */
+    /* border: 1px solid black; */
+}
+
+/* รูปภาพสินค้า */
+.productThumbnail {
+    /* ทำให้รูปใหญ่เต็มกรอบ */
+    width: 100%;
+    /* กำหนดขนาด */
+    height: 100px;
+    /* กรณีขยายแล้วผิดสัดส่วน ให้ใช้เพื่อรักษาสัดส่วนไว้ */
+    object-fit: cover;
+    /* เพิ่มขอบโค้ง */
+    border-radius: 8px;
+}
+
+#productList {
+    /*  ใช้ไว้จัด element ให้เป็นแบบ row column  */
+    display: grid;
+    /* กำหนดความกว้างสูงสุดที่รับได้ */
+    max-width: 1240px;
+    /* จัดให้อยู่กึ่งกลางใช้ auto || บน > ล่าง / ซ้าย > ขวา */
+    margin: 5em auto;
+    /* กำหนดแบบตายตัวว่ามีกี่ column */
+    /* grid-template-columns: 1fr 1fr 1fr ; */
+    /* repeat ใช้กำหนดให้มันออโต้ขนาด ขนาดเท่าไหร่ก็ได้ตามหน้าจอ โดยมีขนาดของ card พื้นฐาน ขั้นต่่ำ 280px และไม่เกิน 1ช่อง */
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); 
+    /* ช่องว่างระหว่างกล่อง */
+    gap: 2em;
+    /* ขอบข้างๆ */
+    padding: 1em;
+}
+/* รายละเอียดสินค้า */
+.productBottomSheet {
+    /* จัดเป็น flex เนื่องจากอยากให้ข้อมูล กับ Button อยู่แนวเดียวกัน */
+    display: flex;
+    /* จัดให้แยกคนละฝั่ง */
+    justify-content: space-between;
+}
+
+.productInfoContainer {}
+
+/* แก้ส่วนของชื่อสินค้า */
+.productName {
+    /* กำหนดให้เป็น block เพื่อที่จะได้กำหนดตำแหน่งได้ */
+    display: block; 
+    /* กำหนดให้ห่างจากด้านบน 1 ตัวอกษร */
+    margin-top: 1em;
+    
+
+}
+
+.productPrice {}
+
+.addToCart {
+    /* เพิ่มสีพื้นหลังปุ่ม */
+    background-color: rgb(0, 153, 255);
+    /* ขอบโค้ง */
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 0.5em 2em;
+}
+
+#viewCart {
+    /* เพิ่มสีพื้นหลังปุ่ม */
+    background-color: rgb(0, 153, 255);
+    /* ขอบโค้ง */
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 0.5em 2em;
+    font-size: 15px;
+}
